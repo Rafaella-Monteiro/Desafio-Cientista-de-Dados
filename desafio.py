@@ -81,7 +81,7 @@ print(f"Mean Squared Error: {mse}")
 with open('modelo_imdb.pkl', 'wb') as file:
     pickle.dump(model, file)
 
-# Célula 6: Análise de Overview para Inferência de Gênero
+# Análise de Overview para Inferência de Gênero
 data_genre = data[['Overview', 'Genre']].dropna()
 X_train, X_test, y_train, y_test = train_test_split(data_genre['Overview'], data_genre['Genre'], test_size=0.2, random_state=42)
 pipeline = Pipeline([
@@ -99,7 +99,7 @@ print(f"Predicted Genre: {predicted_genre[0]}")
 
 
 
-# Célula 7: Modelo de regressão linear para previsão da nota IMDB
+# Modelo de regressão linear para previsão da nota IMDB
 filtered_data = data.dropna(subset=['IMDB_Rating', 'Meta_score', 'No_of_Votes', 'Gross', 'Star1', 'Genre', 'Runtime'])
 filtered_data['Runtime'] = filtered_data['Runtime'].str.replace(' min', '').astype(int)
 filtered_data = pd.get_dummies(filtered_data, columns=['Genre', 'Certificate'], drop_first=True)
